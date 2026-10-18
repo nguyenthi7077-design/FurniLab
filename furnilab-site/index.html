@@ -302,6 +302,8 @@ document.querySelectorAll(".copy").forEach(function(b){b.addEventListener("click
 })});
 function sel(b){var n=b.parentNode.querySelector("b"),r=document.createRange();r.selectNodeContents(n);var s=getSelection();s.removeAllRanges();s.addRange(r)}
 
+/* Paste your free Web3Forms access key between the quotes to send pre-orders straight to your email */
+var FORM_KEY="";
 (function(){
 var all=ITEMS.map(function(i){return{code:i[0],name:i[1],price:i[2]}}).concat(OCC.map(function(o){return{code:o[0],name:o[1],price:o[2]}}));
 var box=document.getElementById("poItems"),state={};
@@ -334,7 +336,17 @@ f.addEventListener("submit",function(e){
   var txt="FurniLab pre-order request (December 2026)\n\n"+lines.join("\n")+"\n\nEstimated total: "+fmt(t)+" AUD\n\nName: "+name+"\nEmail: "+email+"\nPhone: "+(f.phone.value.trim()||"-")+"\nDelivery: "+(f.where.value.trim()||"-")+"\nNotes: "+(f.notes.value.trim()||"-");
   document.getElementById("poText").value=txt;
   document.getElementById("poMail").href="mailto:nguyenthi7077@gmail.com?subject="+encodeURIComponent("FurniLab pre-order request")+"&body="+encodeURIComponent(txt);
-  res.hidden=false;res.scrollIntoView({behavior:"smooth",block:"nearest"});
+  var h=res.querySelector("h4"),p=res.querySelector("p"),btn=f.querySelector(".submit");
+  function show(sent){
+    if(sent){h.textContent="Your pre-order request has been sent";p.innerHTML="Thank you, "+name.replace(/</g,"&lt;")+". Boby / Thi will reply to <b>"+email.replace(/</g,"&lt;")+"</b> to confirm. A copy of your request is below for your records."}
+    else{h.textContent="Your pre-order request is ready";p.innerHTML="We could not send it automatically. Copy it and send it to <b>nguyenthi7077@gmail.com</b>, or message <b>+0424323878</b>, and Boby / Thi will confirm your pre-order."}
+    res.hidden=false;res.scrollIntoView({behavior:"smooth",block:"nearest"});
+  }
+  if(!FORM_KEY){h.textContent="Your pre-order request is ready";p.innerHTML="It has not been sent yet. Copy it and send it to <b>nguyenthi7077@gmail.com</b>, or message <b>+0424323878</b>, and Boby / Thi will confirm your pre-order.";res.hidden=false;res.scrollIntoView({behavior:"smooth",block:"nearest"});return}
+  btn.disabled=true;var old=btn.textContent;btn.textContent="Sending...";
+  fetch("https://api.web3forms.com/submit",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({access_key:FORM_KEY,subject:"FurniLab pre-order request from "+name,from_name:"FurniLab website",name:name,email:email,phone:f.phone.value.trim()||"-",delivery:f.where.value.trim()||"-",message:txt})})
+   .then(function(r){return r.json()}).then(function(j){show(!!j.success)}).catch(function(){show(false)})
+   .then(function(){btn.disabled=false;btn.textContent=old});
 });
 document.getElementById("poCopy").addEventListener("click",function(){
   var b=this,ta=document.getElementById("poText"),done=function(){var o=b.textContent;b.textContent="Copied";setTimeout(function(){b.textContent=o},1400)};
