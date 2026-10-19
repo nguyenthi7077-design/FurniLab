@@ -46,6 +46,13 @@ p{margin:0 0 1em;max-width:62ch}
 .hero h1{font-size:clamp(54px,11vw,128px);line-height:.95;letter-spacing:-.01em}
 .hero .tag{font-family:var(--display);font-style:italic;font-size:clamp(20px,2.6vw,28px);margin:16px 0 0;color:#f0dfb8}
 .hero .sub{margin:10px 0 0;font-size:14px;letter-spacing:.08em;color:#e2e6dd}
+/* Wide screens: show the photo at about its own size beside a green panel, so it stays sharp (as on the catalogue cover) */
+@media (min-width:1000px){
+  .hero{background:#2c3a2f;min-height:700px}
+  .hero::before{inset:0 38% 0 0;background:linear-gradient(180deg,rgba(15,21,17,.5) 0,rgba(15,21,17,0) 22%),url("img/hero.jpg") center 62%/cover no-repeat}
+  .hero .wrap{max-width:none;width:38%;margin:0 0 0 62%;padding:0 44px 64px 52px}
+  .hero h1{font-size:clamp(48px,5.6vw,92px)}
+}
 .strip{height:8px;background:linear-gradient(90deg,#9a7233 0 25%,#d8c9a8 25% 50%,#b5683c 50% 75%,#6f8a6a 75%)}
 
 /* about */
