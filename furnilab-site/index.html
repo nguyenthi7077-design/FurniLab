@@ -67,10 +67,23 @@ p{margin:0 0 1em;max-width:62ch}
 /* materials */
 .materials{background:var(--surface);padding-block:80px}
 .materials .head{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:end;margin-bottom:34px}
-.mat-list{display:grid;grid-template-columns:repeat(5,1fr);gap:0;border-top:2px solid var(--ink)}
-.mat-list div{padding:20px 18px 22px 0}
+.mat-list{display:grid;grid-template-columns:repeat(5,1fr);gap:22px}
+.mat-list div{padding:0}
+.mat-list img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;margin-bottom:14px}
 .mat-list b{display:block;font-family:var(--display);font-weight:400;font-size:22px;margin-bottom:6px}
 .mat-list span{font-size:14px;color:var(--muted)}
+.mat-list .wood strong{display:block;color:var(--accent);font-weight:600;margin-bottom:2px}
+.ed-steps{list-style:none;margin:30px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:22px;counter-reset:n}
+.ed-steps li{display:flex;flex-direction:column;gap:6px;color:var(--accent);border-top:2px solid var(--ink);padding-top:16px}
+.ed-steps b{font-family:var(--display);font-weight:400;font-size:20px;color:var(--ink);margin-top:6px}
+.ed-steps span{font-size:14px;color:var(--muted)}
+.cmp{margin-top:44px}
+.cmp h3{font-size:20px;color:var(--accent);margin-bottom:14px}
+.cmp-r{display:grid;grid-template-columns:150px 1fr 1fr;gap:20px;padding:12px 0;border-top:1px solid var(--line);font-size:14px}
+.cmp-r:last-child{border-bottom:1px solid var(--line)}
+.cmp-r span:first-child{font-weight:600}
+.cmp-h{font-family:var(--display);font-size:18px;border-top:2px solid var(--ink)}
+.cmp-note{font-size:13px;color:var(--muted);margin:12px 0 0;max-width:70ch}
 .ed{margin-top:34px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:baseline;max-width:820px}
 .ed h3{font-size:20px;color:var(--accent)}
 .ed p{margin:0}
@@ -125,6 +138,7 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.14);padding-top:20px;display
   .about .grid,.reach .grid{grid-template-columns:1fr;gap:36px}
   .about .photo{aspect-ratio:4/3}
   .mat-list{grid-template-columns:repeat(2,1fr)}
+  .ed-steps{grid-template-columns:repeat(2,1fr)}
   .cards{grid-template-columns:repeat(2,1fr)}
   .pillars{grid-template-columns:repeat(2,1fr);row-gap:10px}
 }
@@ -135,6 +149,12 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.14);padding-top:20px;display
   .cards{grid-template-columns:1fr}
   .about{padding-block:64px 48px}
   .ed{grid-template-columns:1fr;gap:6px}
+  .ed-steps{grid-template-columns:1fr}
+  .cmp-r{grid-template-columns:1fr;gap:4px}
+  .cmp-h{display:none}
+  .cmp-r span:nth-child(2)::before{content:"ED coating: ";font-weight:600}
+  .cmp-r span:nth-child(3)::before{content:"Powder coating: ";font-weight:600}
+  .cmp-h span::before{content:none!important}
   .occ .r{grid-template-columns:70px 1fr auto}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card img{transition:none}}
@@ -211,13 +231,32 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.14);padding-top:20px;display
     <p style="max-width:46ch;margin:0;color:var(--muted)">We combine different materials to create unique, luxurious outdoor furniture.</p>
   </div>
   <div class="mat-list">
-    <div><b>Timber</b><span>Acacia and eucalyptus frames and tops</span></div>
-    <div><b>Metal</b><span>Black-coated steel frames</span></div>
-    <div><b>Woven wicker</b><span>Twisted wicker and hand-woven rope</span></div>
-    <div><b>Polycement</b><span>Terrazzo-look tables</span></div>
-    <div><b>Sintered stone</b><span>9 mm tops in Garni Gorge and Travertino sand</span></div>
+    <div><img src="img/mat-timber.jpg" alt="Timber bar stool with woven seat and back on a white background" width="640" height="480" loading="lazy"><b>Timber</b><span class="wood"><strong>Two woods: Acacia &amp; Eucalyptus</strong>Used for frames and tops</span></div>
+    <div><img src="img/mat-metal.jpg" alt="Round timber-top table with black-coated steel legs on a white background" width="640" height="480" loading="lazy"><b>Metal</b><span>Black-coated steel frames</span></div>
+    <div><img src="img/mat-wicker.jpg" alt="Woven wicker and rope armchair on a white background" width="640" height="480" loading="lazy"><b>Woven wicker</b><span>Twisted wicker and hand-woven rope</span></div>
+    <div><img src="img/mat-polycement.jpg" alt="Terrazzo-look polycement table on timber legs on a white background" width="640" height="480" loading="lazy"><b>Polycement</b><span>Terrazzo-look tables</span></div>
+    <div><img src="img/mat-stone.jpg" alt="Sintered stone top table on timber legs on a white background" width="640" height="480" loading="lazy"><b>Sintered stone</b><span>9 mm tops in Garni Gorge and Travertino sand</span></div>
   </div>
-  <div class="ed"><h3>ED coating</h3><p>We use Electro-Deposition (ED) coating technology, widely used in the automotive industry, to deliver a premium, durable finish.</p></div>
+  <div class="ed">
+    <h3>Two-layer coating</h3>
+    <p>Every steel frame is coated twice: first with Electro-Deposition (ED) coating, the technology widely used in the automotive industry, then with a powder coating on top. The result is a premium, durable finish.</p>
+  </div>
+  <ol class="ed-steps">
+    <li><svg viewBox="0 0 64 64" width="56" height="56" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 40h36l-4 14H18z"/><path d="M22 14c0 6-6 8-6 14M32 10c0 7-6 9-6 17M42 14c0 6-6 8-6 14"/></svg><b>1. Clean</b><span>The steel frame is degreased and pre-treated so the coating bonds firmly.</span></li>
+    <li><svg viewBox="0 0 64 64" width="56" height="56" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 28h48v26H8z"/><path d="M8 38c8-4 14 4 24 0s16 4 24 0"/><path d="M26 6v22M38 6v22M26 6h12"/><path d="M14 14h6M17 11v6M44 14h6"/></svg><b>2. ED coating</b><span>The frame is dipped in a water-based paint bath and an electric current draws the paint onto every surface, including corners and inside tubes. It is then rinsed and baked.</span></li>
+    <li><svg viewBox="0 0 64 64" width="56" height="56" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 44h30l-6 10H16z" transform="translate(0 -10)"/><path d="M44 18l8 4-8 4"/><circle cx="46" cy="36" r="1.6"/><circle cx="52" cy="40" r="1.6"/><circle cx="46" cy="44" r="1.6"/><circle cx="52" cy="48" r="1.6"/><rect x="8" y="14" width="26" height="8" rx="2"/></svg><b>3. Powder coating</b><span>A dry coloured powder is sprayed on with a static charge, so it clings to the ED layer.</span></li>
+    <li><svg viewBox="0 0 64 64" width="56" height="56" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="14" width="48" height="38" rx="4"/><path d="M18 26c4-5 8 3 12-2s8 3 14-2M18 38c4-5 8 3 12-2s8 3 14-2"/></svg><b>4. Bake and cure</b><span>The frame is baked again so the powder melts into a smooth, tough, even finish.</span></li>
+  </ol>
+  <div class="cmp">
+    <h3>What each layer does</h3>
+    <div class="cmp-t" role="table">
+      <div class="cmp-r cmp-h" role="row"><span role="columnheader"></span><span role="columnheader">Layer 1: ED coating</span><span role="columnheader">Layer 2: Powder coating</span></div>
+      <div class="cmp-r" role="row"><span role="rowheader">How it is applied</span><span>Dipped in a paint bath and charged with electricity</span><span>Dry powder sprayed on with a static charge, then baked</span></div>
+      <div class="cmp-r" role="row"><span role="rowheader">Coverage</span><span>Even on every surface, including inside hollow tubes and tight corners</span><span>Covers the visible surfaces with a thicker film</span></div>
+      <div class="cmp-r" role="row"><span role="rowheader">Role</span><span>Rust protection</span><span>Colour and a tough, durable surface</span></div>
+    </div>
+    <p class="cmp-note">Together: ED protects the steel from the inside out, and powder coating gives the finished colour and wear resistance.</p>
+  </div>
 </div></section>
 
 <section class="collection" id="collection"><div class="wrap">
