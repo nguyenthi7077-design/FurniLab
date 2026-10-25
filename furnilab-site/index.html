@@ -46,12 +46,18 @@ p{margin:0 0 1em;max-width:62ch}
 .hero h1{font-size:clamp(54px,11vw,128px);line-height:.95;letter-spacing:-.01em}
 .hero .tag{font-family:var(--display);font-style:italic;font-size:clamp(20px,2.6vw,28px);margin:16px 0 0;color:#f0dfb8}
 .hero .sub{margin:10px 0 0;font-size:14px;letter-spacing:.08em;color:#e2e6dd}
-/* Wide screens: show the photo at about its own size beside a green panel, so it stays sharp (as on the catalogue cover) */
+/* Wide screens: same layout as the catalogue cover - a green page, the photo as a landscape block on the left, text column on the right */
+.hero-x{display:none}
 @media (min-width:1000px){
-  .hero{background:#2c3a2f;min-height:700px}
-  .hero::before{inset:0 38% 0 0;background:linear-gradient(180deg,rgba(15,21,17,.5) 0,rgba(15,21,17,0) 22%),url("img/hero.jpg") center 62%/cover no-repeat}
-  .hero .wrap{max-width:none;width:38%;margin:0 0 0 62%;padding:0 44px 64px 52px}
-  .hero h1{font-size:clamp(48px,5.6vw,92px)}
+  .hero{background:#2c3a2f;min-height:800px;align-items:stretch}
+  .hero::before{inset:19% 34% 19% 0;background:url("img/hero.jpg") center 62%/cover no-repeat}
+  .hero .wrap{max-width:none;width:34%;margin:0 0 0 66%;padding:96px 52px 52px 52px;display:flex;flex-direction:column}
+  .hero h1{font-size:clamp(48px,5.6vw,84px)}
+  .hero-x{display:block}
+  .hero .eyebrow-h{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#cfa65e;margin:0 0 14px}
+  .hero .preorder{margin-top:30px;border:1px solid #9a7233;padding:16px 20px;font-size:14px;line-height:1.55;color:#e2e6dd}
+  .hero .preorder b{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#cfa65e;margin-bottom:8px;font-weight:600}
+  .hero .contact-x{margin-top:auto;font-size:13px;line-height:1.7;color:#c4cbbf}
 }
 .strip{height:8px;background:linear-gradient(90deg,#9a7233 0 25%,#d8c9a8 25% 50%,#b5683c 50% 75%,#6f8a6a 75%)}
 
@@ -60,9 +66,29 @@ p{margin:0 0 1em;max-width:62ch}
 .about .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:start}
 .about h2{margin-bottom:22px}
 .about .photo{aspect-ratio:3/2;object-fit:cover;width:100%;height:auto;box-shadow:0 18px 40px rgba(0,0,0,.16)}
+.about .side .pillars{margin-top:26px}
+.about .side .pillars div{font-size:18px;padding-right:8px}
 .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:34px;border-top:1px solid var(--line)}
 .pillars div{padding:16px 14px 0 0;font-family:var(--display);font-size:20px}
 .pillars small{display:block;font-family:var(--body);font-size:13px;color:var(--muted);margin-top:4px;line-height:1.45}
+
+/* price route */
+.route{margin-top:64px}
+.route h3{font-size:22px;color:var(--accent);margin-bottom:6px}
+.route>p{max-width:62ch;color:var(--muted);margin:0 0 24px}
+.rt{display:grid;grid-template-columns:150px 1fr;gap:18px;align-items:center;padding:18px 0;border-top:1px solid var(--line)}
+.rt:last-of-type{border-bottom:1px solid var(--line)}
+.rt>b{font-family:var(--display);font-weight:400;font-size:18px}
+.rt ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px 0;align-items:center}
+.rt li{padding:9px 16px;border:1px solid var(--line);font-size:14px;background:var(--surface)}
+.rt li+li:before{content:"\2192";position:absolute;margin-left:-22px;color:var(--muted)}
+.rt li{position:relative;margin-left:28px}
+.rt li:first-child{margin-left:0}
+.rt li+li:before{left:0;margin:0;transform:translateX(-22px)}
+.rt.us li{background:var(--green);color:var(--on-green);border-color:var(--green)}
+.rt.us li.you{background:none;color:var(--ink);border-color:var(--ink)}
+.rt small{display:block;margin-top:10px;font-size:13px;color:var(--muted);flex-basis:100%}
+@media (max-width:640px){.rt{grid-template-columns:1fr;gap:10px}}
 
 /* materials */
 .materials{background:var(--surface);padding-block:80px}
@@ -77,6 +103,7 @@ p{margin:0 0 1em;max-width:62ch}
 .ed-steps li{display:flex;flex-direction:column;gap:6px;color:var(--accent);border-top:2px solid var(--ink);padding-top:16px}
 .ed-steps b{font-family:var(--display);font-weight:400;font-size:20px;color:var(--ink);margin-top:6px}
 .ed-steps span{font-size:14px;color:var(--muted)}
+.ed-steps .lbl{font-style:normal;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-top:4px}
 .cmp{margin-top:44px}
 .cmp h3{font-size:20px;color:var(--accent);margin-bottom:14px}
 .cmp-r{display:grid;grid-template-columns:150px 1fr 1fr;gap:20px;padding:12px 0;border-top:1px solid var(--line);font-size:14px}
@@ -115,6 +142,13 @@ p{margin:0 0 1em;max-width:62ch}
 .reach{padding-block:72px 96px}
 .reach .grid{display:grid;grid-template-columns:1fr 1fr;gap:64px}
 .reach h3{font-size:24px;margin-bottom:10px}
+.clients{margin-top:18px;border-top:1px solid var(--line)}
+.clients div{display:grid;grid-template-columns:230px 1fr;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:15px}
+.clients b{font-family:var(--display);font-weight:400;font-size:17px}
+.clients span{color:var(--muted)}
+@media (max-width:480px){.clients div{grid-template-columns:1fr;gap:2px}}
+.about .supply{margin-top:30px;padding-top:18px;border-top:1px solid var(--line)}
+.about .supply b{display:block;font-family:var(--display);font-weight:400;font-size:20px;margin-bottom:2px}
 .regions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
 .regions span{border:1px solid var(--line);padding:6px 14px;font-size:14px}
 
@@ -204,9 +238,12 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.14);padding-top:20px;display
 
 <section class="hero" id="top">
   <div class="wrap">
+    <p class="eyebrow-h hero-x">Outdoor furniture &middot; Collection 2026</p>
     <h1>FurniLab</h1>
     <p class="tag">&ldquo;Pure. Modern. Timeless.&rdquo;</p>
     <p class="sub">Outdoor furniture &middot; Designed. Developed. Manufactured by us.</p>
+    <div class="preorder hero-x"><b>Pre-order 2026</b>Now accepting pre-orders for December 2026. Secure your collection early and prepare your outdoor space for the season ahead.</div>
+    <p class="contact-x hero-x">Boby / Thi Nguyen<br>+61 424 323 878<br>nguyenthi7077@gmail.com<br>www.furnilab.com.au</p>
   </div>
 </section>
 <div class="strip"></div>
@@ -217,13 +254,23 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.14);padding-top:20px;display
     <h2>Designed. Developed. Manufactured by us.</h2>
     <p>FurniLab is an independent outdoor furniture manufacturer creating distinctive furniture for residential, hospitality and commercial spaces. From concept and material selection through to production and finishing, we manufacture our furniture ourselves, with no third-party manufacturers or intermediaries.</p>
     <p>Our 2026 collection brings together timber, metal, woven wicker, polycement and sintered stone, creating furniture that combines contemporary design, functionality and craftsmanship.</p>
+    <p class="supply"><b>Supplying retailers worldwide</b><span class="regions"><span>Australia &amp; New Zealand</span><span>Europe</span><span>USA</span></span></p>
+  </div>
+  <div class="side">
+    <img class="photo" src="img/fl01-life.jpg" alt="The Noir Bistro Set, a round timber table with two black-cushioned armchairs, in a sunlit garden" width="1600" height="1065" loading="lazy">
     <div class="pillars" aria-label="Why FurniLab">
       <div>Unique</div><div>Lightweight</div><div>Luxurious</div><div>Artistic</div>
     </div>
-    <p style="margin-top:18px;color:var(--muted);font-size:15px">Furniture for people who appreciate pieces that feel different from the ordinary, balancing visual impact with everyday comfort.</p>
+    <p style="margin-top:14px;color:var(--muted);font-size:15px">Furniture for people who appreciate pieces that feel different from the ordinary, balancing visual impact with everyday comfort.</p>
   </div>
-  <img class="photo" src="img/fl01-life.jpg" alt="The Noir Bistro Set, a round timber table with two black-cushioned armchairs, in a sunlit garden" width="1600" height="1065" loading="lazy">
-</div></section>
+</div>
+  <div class="wrap route">
+    <h3>The best price, with premium quality</h3>
+    <p>We cut out the middle. Your furniture comes straight from the manufacturer to you, with no import company or other parties adding their margin along the way. The price is lower; the quality stays premium.</p>
+    <div class="rt"><b>The usual way</b><ol><li>Manufacturer</li><li>Import company</li><li>Wholesaler / other parties</li><li>Retailer</li><li class="you">You</li></ol></div>
+    <div class="rt us"><b>FurniLab</b><ol><li>Manufacturer</li><li class="you">You</li></ol></div>
+  </div>
+</section>
 
 <section class="materials" id="materials"><div class="wrap">
   <div class="head">
@@ -238,25 +285,15 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.14);padding-top:20px;display
     <div><img src="img/mat-stone.jpg" alt="Sintered stone top table on timber legs on a white background" width="640" height="480" loading="lazy"><b>Sintered stone</b><span>9 mm tops in Garni Gorge and Travertino sand</span></div>
   </div>
   <div class="ed">
-    <h3>Two-layer coating</h3>
-    <p>Every steel frame is coated twice: first with Electro-Deposition (ED) coating, the technology widely used in the automotive industry, then with a powder coating on top. The result is a premium, durable finish.</p>
+    <h3>Built to last outdoors</h3>
+    <p>Every steel frame gets two protective layers, the same ED coating technology used on cars, then a powder coating on top. <strong>The result is a rust-resistant, premium finish.</strong></p>
   </div>
   <ol class="ed-steps">
-    <li><svg viewBox="0 0 64 64" width="56" height="56" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 40h36l-4 14H18z"/><path d="M22 14c0 6-6 8-6 14M32 10c0 7-6 9-6 17M42 14c0 6-6 8-6 14"/></svg><b>1. Clean</b><span>The steel frame is degreased and pre-treated so the coating bonds firmly.</span></li>
-    <li><svg viewBox="0 0 64 64" width="56" height="56" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 28h48v26H8z"/><path d="M8 38c8-4 14 4 24 0s16 4 24 0"/><path d="M26 6v22M38 6v22M26 6h12"/><path d="M14 14h6M17 11v6M44 14h6"/></svg><b>2. ED coating</b><span>The frame is dipped in a water-based paint bath and an electric current draws the paint onto every surface, including corners and inside tubes. It is then rinsed and baked.</span></li>
-    <li><svg viewBox="0 0 64 64" width="56" height="56" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 44h30l-6 10H16z" transform="translate(0 -10)"/><path d="M44 18l8 4-8 4"/><circle cx="46" cy="36" r="1.6"/><circle cx="52" cy="40" r="1.6"/><circle cx="46" cy="44" r="1.6"/><circle cx="52" cy="48" r="1.6"/><rect x="8" y="14" width="26" height="8" rx="2"/></svg><b>3. Powder coating</b><span>A dry coloured powder is sprayed on with a static charge, so it clings to the ED layer.</span></li>
-    <li><svg viewBox="0 0 64 64" width="56" height="56" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="14" width="48" height="38" rx="4"/><path d="M18 26c4-5 8 3 12-2s8 3 14-2M18 38c4-5 8 3 12-2s8 3 14-2"/></svg><b>4. Bake and cure</b><span>The frame is baked again so the powder melts into a smooth, tough, even finish.</span></li>
+    <li><svg viewBox="0 0 64 64" width="56" height="56" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 40h36l-4 14H18z"/><path d="M22 14c0 6-6 8-6 14M32 10c0 7-6 9-6 17M42 14c0 6-6 8-6 14"/></svg><em class="lbl">Step 1 · Clean</em><b>A clean start</b><span>The coating bonds firmly to the steel.</span></li>
+    <li><svg viewBox="0 0 64 64" width="56" height="56" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 28h48v26H8z"/><path d="M8 38c8-4 14 4 24 0s16 4 24 0"/><path d="M26 6v22M38 6v22M26 6h12"/><path d="M14 14h6M17 11v6M44 14h6"/></svg><em class="lbl">Step 2 · ED coating</em><b>Rust protection inside and out</b><span>Reaches every corner and inside the tubes.</span></li>
+    <li><svg viewBox="0 0 64 64" width="56" height="56" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 44h30l-6 10H16z" transform="translate(0 -10)"/><path d="M44 18l8 4-8 4"/><circle cx="46" cy="36" r="1.6"/><circle cx="52" cy="40" r="1.6"/><circle cx="46" cy="44" r="1.6"/><circle cx="52" cy="48" r="1.6"/><rect x="8" y="14" width="26" height="8" rx="2"/></svg><em class="lbl">Step 3 · Powder coating</em><b>Lasting colour</b><span>A tough, even coloured layer for everyday wear.</span></li>
+    <li><svg viewBox="0 0 64 64" width="56" height="56" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="14" width="48" height="38" rx="4"/><path d="M18 26c4-5 8 3 12-2s8 3 14-2M18 38c4-5 8 3 12-2s8 3 14-2"/></svg><em class="lbl">Step 4 · Bake and cure</em><b>A smooth, even finish</b><span>Baked hard for everyday outdoor use.</span></li>
   </ol>
-  <div class="cmp">
-    <h3>What each layer does</h3>
-    <div class="cmp-t" role="table">
-      <div class="cmp-r cmp-h" role="row"><span role="columnheader"></span><span role="columnheader">Layer 1: ED coating</span><span role="columnheader">Layer 2: Powder coating</span></div>
-      <div class="cmp-r" role="row"><span role="rowheader">How it is applied</span><span>Dipped in a paint bath and charged with electricity</span><span>Dry powder sprayed on with a static charge, then baked</span></div>
-      <div class="cmp-r" role="row"><span role="rowheader">Coverage</span><span>Even on every surface, including inside hollow tubes and tight corners</span><span>Covers the visible surfaces with a thicker film</span></div>
-      <div class="cmp-r" role="row"><span role="rowheader">Role</span><span>Rust protection</span><span>Colour and a tough, durable surface</span></div>
-    </div>
-    <p class="cmp-note">Together: ED protects the steel from the inside out, and powder coating gives the finished colour and wear resistance.</p>
-  </div>
 </div></section>
 
 <section class="collection" id="collection"><div class="wrap">
@@ -277,8 +314,8 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.14);padding-top:20px;display
 
 <section class="reach"><div class="wrap grid">
   <div><h3>Made for</h3><p>Residential gardens and terraces, hospitality venues, and design projects.</p></div>
-  <div><h3>Global outlook</h3><p>Over 20 years of international market experience, with partners across Australia, Europe and USA.</p>
-    <div class="regions"><span>Australia</span><span>Europe</span><span>USA</span></div></div>
+  <div><h3>Global outlook</h3><p>Over 20 years of international market experience, with partners across Australia &amp; New Zealand, Europe and USA.</p>
+    <div class="regions"><span>Australia &amp; New Zealand</span><span>Europe</span><span>USA</span></div></div>
 </div></section>
 
 <section class="contact" id="contact"><div class="wrap cgrid">
