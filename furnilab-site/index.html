@@ -149,6 +149,10 @@ p{margin:0 0 1em;max-width:62ch}
 .clients span{color:var(--muted)}
 @media (max-width:480px){.clients div{grid-template-columns:1fr;gap:2px}}
 .about .supply{margin-top:30px;padding-top:18px;border-top:1px solid var(--line)}
+.about .supply .clients{display:block;margin-top:10px;border-top:1px solid var(--line)}
+.about .supply .clients>span{display:grid;grid-template-columns:200px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px;color:var(--muted)}
+.about .supply .clients i{font-style:normal;font-family:var(--display);font-size:17px;color:var(--ink)}
+@media (max-width:480px){.about .supply .clients>span{grid-template-columns:1fr;gap:2px}}
 .about .supply b{display:block;font-family:var(--display);font-weight:400;font-size:20px;margin-bottom:2px}
 .regions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
 .regions span{border:1px solid var(--line);padding:6px 14px;font-size:14px}
@@ -253,9 +257,9 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.14);padding-top:20px;display
   <div>
     <p class="eyebrow">About FurniLab</p>
     <h2>Designed. Developed. Manufactured by us.</h2>
-    <p>FurniLab is an independent outdoor furniture manufacturer creating distinctive furniture for residential, hospitality and commercial spaces. From concept and material selection through to production and finishing, we manufacture our furniture ourselves, with no third-party manufacturers or intermediaries.</p>
+    <p>Since 2005, we have been an independent outdoor furniture manufacturer creating distinctive furniture for residential, hospitality and commercial spaces. From concept and material selection through to production and finishing, we manufacture our furniture ourselves, with no third-party manufacturers or intermediaries.</p>
     <p>Our 2026 collection brings together timber, metal, woven wicker, polycement and sintered stone, creating furniture that combines contemporary design, functionality and craftsmanship.</p>
-    <p class="supply"><b>Supplying retailers worldwide</b><span class="regions"><span>Australia &amp; New Zealand</span><span>Europe</span><span>USA</span></span></p>
+    <p class="supply"><b>Supplying retailers worldwide</b><span class="clients" aria-label="Our clients"><span><i>Australia &amp; New Zealand</i>Retail partners</span><span><i>USA</i>TJX &middot; HomeGoods</span><span><i>Europe</i>Germany: Tchibo &middot; Spain: El Corte Ingl&eacute;s</span></span></p>
   </div>
   <div class="side">
     <img class="photo" src="img/fl01-life.jpg" alt="The Noir Bistro Set, a round timber table with two black-cushioned armchairs, in a sunlit garden" width="1600" height="1065" loading="lazy">
@@ -356,7 +360,7 @@ footer .wrap{border-top:1px solid rgba(255,255,255,.14);padding-top:20px;display
 <footer><div class="wrap"><span>&copy; FurniLab 2026 &middot; ABN 11 822 146 348</span><span>Please contact FurniLab for availability and pre-order for December 2026.</span></div></footer>
 
 <script>
-var ITEMS=[["FL-01", "Noir Bistro Set", 450, "bistro", "img/fl01-card.jpg", "3-piece bistro set", "fl-01.html"], ["FL-02", "Timber Counter Set", 1199, "counter", "img/fl02-card.jpg", "5-piece counter set", "fl-02.html"], ["FL-03", "Gorge Counter Set, Cream", 1350, "counter", "img/fl03-card.jpg", "5-piece counter set", "fl-03.html"], ["FL-04", "Square Dining Set", 999, "dining", "img/fl04-card.jpg", "5-piece dining set", "fl-04.html"], ["FL-05", "Gorge Counter Set, Brown", 1250, "counter", "img/fl05-card.jpg", "5-piece counter set", "fl-05.html"], ["FL-06", "Dining Set, Timber", 1650, "dining", "img/fl06-card.jpg", "7-piece dining set", "fl-06.html"], ["FL-07", "Noir Oval Dining Set", 1650, "dining", "img/fl07-card.jpg", "7-piece dining set", "fl-07.html"], ["FL-08", "Sand Bistro Set", 630, "bistro", "img/fl08-card.jpg", "3-piece bistro set", "fl-08.html"], ["FL-09", "Sand Dining Set", 1750, "dining", "img/fl09-card.jpg", "7-piece dining set", "fl-09.html"], ["FL-10", "Inlay Bistro Set", 699, "bistro", "img/fl10-card.jpg", "3-piece bistro set", "fl-10.html"], ["FL-11", "Lounge Sofa Set", 1499, "lounge", "img/fl11-card.jpg", "4-piece lounge set", "fl-11.html"], ["FL-12", "Chat Set", 360, "occasional", "img/fl12-card.jpg", "3-piece chat set", "fl-12.html"], ["FL-13", "Side Table", 135, "occasional", "img/fl13-card.jpg", "Single side table", "fl-13.html"]];
+var ITEMS=[["FL-01", "Noir Bistro Set", 450, "bistro", "img/fl01-card.jpg", "3-piece bistro set", "fl-01.html"], ["FL-02", "Timber Counter Set", 1199, "counter", "img/fl02-card.jpg", "5-piece counter set", "fl-02.html"], ["FL-03", "Gorge Counter Set, Cream", 1350, "counter", "img/fl03-card.jpg", "5-piece counter set", "fl-03.html"], ["FL-04", "Square Dining Set", 999, "dining", "img/fl04-card.jpg", "5-piece dining set", "fl-04.html"], ["FL-05", "Gorge Counter Set, Brown", 1250, "counter", "img/fl05-card.jpg", "5-piece counter set", "fl-05.html"], ["FL-06", "Timber Dining Set", 1650, "dining", "img/fl06-card.jpg", "7-piece dining set", "fl-06.html"], ["FL-07", "Noir Oval Dining Set", 1650, "dining", "img/fl07-card.jpg", "7-piece dining set", "fl-07.html"], ["FL-08", "Sand Bistro Set", 630, "bistro", "img/fl08-card.jpg", "3-piece bistro set", "fl-08.html"], ["FL-09", "Sand Dining Set", 1750, "dining", "img/fl09-card.jpg", "7-piece dining set", "fl-09.html"], ["FL-10", "Inlay Bistro Set", 699, "bistro", "img/fl10-card.jpg", "3-piece bistro set", "fl-10.html"], ["FL-11", "Lounge Sofa Set", 1499, "lounge", "img/fl11-card.jpg", "4-piece lounge set", "fl-11.html"], ["FL-12", "Chat Set", 360, "occasional", "img/fl12-card.jpg", "3-piece chat set", "fl-12.html"], ["FL-13", "Side Table", 135, "occasional", "img/fl13-card.jpg", "Single side table", "fl-13.html"]];
 function fmt(n){return "$"+n.toLocaleString("en-AU")}
 var cards=document.getElementById("cards");
 ITEMS.forEach(function(it){
